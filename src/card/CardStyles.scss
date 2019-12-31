@@ -38,12 +38,15 @@
   }
 }
 
-.expense {
+.expense:not(.icon) {
   background-color: var(--red);
+  box-shadow: 2px 5px 20px rgba(#ff5958, 0.5);
 }
-.income {
+.income:not(.icon) {
   background-color: var(--blue);
+  box-shadow: 2px 5px 20px rgba(#a8d8ea, 0.5);
 }
-.balance {
+.balance:not(.icon) {
   background-color: var(--yellow);
+  box-shadow: 2px 5px 20px rgba(#ffd271, 0.5);
 }
