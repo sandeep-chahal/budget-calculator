@@ -16,4 +16,17 @@
     flex-direction: row;
     justify-content: space-evenly;
   }
+
+  .logs {
+    // background-color: #000;
+    width: 40%;
+    margin: auto;
+    margin-top: 5rem;
+    .header {
+      font-size: 1.2rem;
+      text-shadow: none;
+      // text-align: left;
+      // margin-left: -3rem;
+    }
+  }
 }
