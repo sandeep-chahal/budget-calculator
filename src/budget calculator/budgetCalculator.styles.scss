@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  height: auto;
+
+  .header {
+    margin-top: 3rem;
+    font-size: 3.5rem;
+    color: var(--black);
+    font-family: "studly", sans-serif;
+    text-align: center;
+    text-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  .card-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
