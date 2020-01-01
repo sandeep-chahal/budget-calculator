@@ -1,0 +1,41 @@
+.btn-container {
+  width: 15rem;
+  height: 30rem;
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  background-color: var(--yellow);
+  border-radius: 8px;
+  clip-path: circle(15% at 70% 85%);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    clip-path: circle(100% at center);
+  }
+  &:hover > .cross-container {
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+  .cross-container {
+    position: absolute;
+    bottom: 13%;
+    left: 55%;
+    width: 30%;
+    height: 4%;
+    transition: all 0.3s ease-out;
+    &:before {
+      transform: rotate(90deg);
+    }
+    &:after,
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      border: 1px solid var(--black);
+      border-radius: 5px;
+    }
+  }
+}

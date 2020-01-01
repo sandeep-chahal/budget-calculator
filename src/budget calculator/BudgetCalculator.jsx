@@ -3,6 +3,7 @@ import "./budgetCalculator.styles.scss";
 
 import Card from "../card/Card";
 import Log from "../log/Log";
+import Button from "../add-button/Button";
 
 class BudgetCalculator extends React.Component {
   state = {
@@ -33,6 +34,7 @@ class BudgetCalculator extends React.Component {
             ))}
           </div>
         </div>
+        <Button></Button>
       </div>
     );
   }
