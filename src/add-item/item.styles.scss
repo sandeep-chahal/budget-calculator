@@ -1,0 +1,47 @@
+.item {
+  padding: 5px 0 5px 10px;
+  width: 80%;
+  height: 4rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+  font-family: "studly", sans-serif;
+  color: var(--black);
+  border-radius: 5px;
+  transition: all 0.2s ease-out;
+
+  opacity: 0;
+  // transform: translateY(100%);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .name {
+    margin-left: 1rem;
+  }
+  *:first-child {
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 80%;
+  }
+
+  .coffee {
+    background-image: url("../assets/img/coffee.png");
+  }
+  .food {
+    background-image: url("../assets/img/food.png");
+  }
+  .rent {
+    background-image: url("../assets/img/rent.png");
+  }
+  .shopping {
+    background-image: url("../assets/img/shopping.png");
+  }
+  .other {
+    background-image: url("../assets/img/other.png");
+  }
+}

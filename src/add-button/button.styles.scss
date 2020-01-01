@@ -17,6 +17,10 @@
     transform: rotate(180deg);
     opacity: 0;
   }
+  &:hover > .item {
+    opacity: 1;
+    // transform: translateY(0);
+  }
   .cross-container {
     position: absolute;
     bottom: 13%;
