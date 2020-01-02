@@ -12,7 +12,7 @@ class BudgetCalculator extends React.Component {
     expense: 2308,
     logs: [
       { name: "coffee", amount: 3 },
-      { name: "Food", amount: 10 },
+      { name: "food", amount: 10 },
       { name: "shopping", amount: 15 }
     ]
   };
@@ -29,8 +29,8 @@ class BudgetCalculator extends React.Component {
         <div className="logs">
           <div className="header">
             <h2>Today</h2>
-            {this.state.logs.map(log => (
-              <Log name={log.name} amount={log.amount}></Log>
+            {this.state.logs.map((log, index) => (
+              <Log name={log.name} amount={log.amount} key={index}></Log>
             ))}
           </div>
         </div>

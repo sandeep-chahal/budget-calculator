@@ -5,7 +5,7 @@ function Log(props) {
   return (
     <div className="log">
       <div className="left">
-        <div className="icon"></div>
+        <div className={props.name}></div>
         <div className="name">{props.name}</div>
       </div>
       <div className="right">-${props.amount}</div>
