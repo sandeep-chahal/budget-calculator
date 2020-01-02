@@ -6,7 +6,9 @@ function Card(props) {
     <div className={props.name + " card"}>
       <div className="details">
         <h3>{props.name}</h3>
-        <div className="amount">${props.amount}</div>
+        <div className="amount">
+          {props.name === "expense" ? "-" : ""}${props.amount}
+        </div>
       </div>
       <div className={props.name + " icon"}></div>
     </div>

@@ -45,3 +45,12 @@
     background-image: url("../assets/img/other.png");
   }
 }
+
+.hidden {
+  display: none;
+  & > * {
+    display: none;
+  }
+  height: 0;
+  padding: 0;
+}

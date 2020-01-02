@@ -8,13 +8,22 @@ import Button from "../add-button/Button";
 class BudgetCalculator extends React.Component {
   state = {
     income: 4000,
-    balance: 1892,
-    expense: 2308,
-    logs: [
-      { name: "coffee", amount: 3 },
-      { name: "food", amount: 10 },
-      { name: "shopping", amount: 15 }
-    ]
+    balance: 4000,
+    expense: 0,
+    logs: []
+  };
+
+  addItem = item => {
+    if (item.name === "") return;
+
+    const logs = [...this.state.logs, item];
+    this.setState({
+      balance: this.state.balance - item.amount,
+      expense: this.state.expense + item.amount,
+      logs: logs
+    });
+    // console.clear();
+    // console.log(item, this.state);
   };
 
   render() {
@@ -34,7 +43,7 @@ class BudgetCalculator extends React.Component {
             ))}
           </div>
         </div>
-        <Button></Button>
+        <Button addItem={this.addItem}></Button>
       </div>
     );
   }

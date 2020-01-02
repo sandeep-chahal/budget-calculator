@@ -1,7 +1,7 @@
 .btn-container {
   width: 15rem;
   height: 30rem;
-  position: absolute;
+  position: fixed;
   bottom: 3%;
   right: 3%;
   background-color: var(--yellow);
@@ -40,6 +40,28 @@
       position: absolute;
       border: 1px solid var(--black);
       border-radius: 5px;
+    }
+  }
+  .btnAdd,
+  .btnCancel {
+    padding: 1rem 2rem;
+    margin: auto;
+    display: block;
+    background-color: #fff;
+    width: 80%;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: "studly", sans-serif;
+    color: var(--black);
+  }
+  input {
+    padding: 1rem;
+    width: 80%;
+    margin: auto;
+    display: block;
+    &[type="text"] {
+      margin-bottom: 1rem;
     }
   }
 }
