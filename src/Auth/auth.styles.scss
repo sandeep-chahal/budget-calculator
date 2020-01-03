@@ -1,0 +1,34 @@
+.auth {
+  width: 500px;
+  height: auto;
+  margin: 5rem auto;
+  padding: 5rem;
+  background-color: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "studly", sans-serif;
+  color: var(--black);
+
+  input {
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin-bottom: 3rem;
+  }
+
+  .btns {
+    display: flex;
+
+    .signup,
+    .login {
+      padding: 1rem;
+      background-color: #fff;
+      margin: 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+  }
+}

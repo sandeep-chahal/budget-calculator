@@ -7,7 +7,7 @@ function Card(props) {
       <div className="details">
         <h3>{props.name}</h3>
         <div className="amount">
-          {props.name === "expense" ? "-" : ""}${props.amount}
+          {props.amount < 0 ? "-" : ""}${Math.abs(props.amount)}
         </div>
       </div>
       <div className={props.name + " icon"}></div>

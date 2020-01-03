@@ -7,8 +7,8 @@ import Button from "../add-button/Button";
 
 class BudgetCalculator extends React.Component {
   state = {
-    income: 4000,
-    balance: 4000,
+    income: 0,
+    balance: 0,
     expense: 0,
     logs: []
   };
@@ -19,7 +19,7 @@ class BudgetCalculator extends React.Component {
     const logs = [...this.state.logs, item];
     this.setState({
       balance: this.state.balance - item.amount,
-      expense: this.state.expense + item.amount,
+      expense: this.state.expense - item.amount,
       logs: logs
     });
     // console.clear();
