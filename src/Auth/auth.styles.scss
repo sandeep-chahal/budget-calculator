@@ -1,6 +1,6 @@
 .auth {
-  width: 500px;
-  height: auto;
+  width: 40rem;
+  height: 50rem;
   margin: 5rem auto;
   padding: 5rem;
   background-color: var(--yellow);
@@ -10,13 +10,16 @@
   align-items: center;
   font-family: "studly", sans-serif;
   color: var(--black);
+  border-radius: 1rem;
 
   input {
-    padding: 0.5rem;
+    padding: 0.8rem;
     margin-bottom: 2rem;
+    width: 80%;
   }
   h1 {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    font-size: 3rem;
   }
 
   .btns {
@@ -24,6 +27,7 @@
 
     .signup,
     .login {
+      font-size: 1.6rem;
       padding: 1rem;
       background-color: #fff;
       margin: 1rem;
