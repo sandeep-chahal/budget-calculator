@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   logged: false,
-  email: null,
+  user: null,
   income: 0,
   balance: 0,
   expense: 0,
@@ -13,7 +13,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         logged: true,
-        email: action.val
+        user: action.payLoad
       };
     case "addItem":
       const logs = [...state.logs, action.payLoad];

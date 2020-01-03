@@ -1,7 +1,7 @@
-export const Login = val => {
+export const Login = user => {
   return {
     type: "Login",
-    val
+    payLoad: user
   };
 };
 
