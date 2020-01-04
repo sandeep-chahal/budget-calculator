@@ -11,6 +11,7 @@ import { addItem } from "../redux/actions";
 function BudgetCalculator(props) {
   const addItem = item => {
     if (item.name === "") return;
+
     props.AddItem(item);
   };
 

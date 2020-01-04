@@ -8,11 +8,11 @@ import auth from "./firebase.util";
 import { connect } from "react-redux";
 
 class App extends React.Component {
-  // componentDidMount() {
-  //   auth.onAuthStateChanged(user => {
-  //     this.props.signIn(user);
-  //   });
-  // }
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (!this.props.logged && token) {
+    }
+  }
   render() {
     return (
       <div className="App">

@@ -17,13 +17,14 @@ function Auth(props) {
         props.login(user);
       })
       .catch(error => {
-        alert("nope");
+        alert(error.message);
       });
   };
   const handleSignup = () => {
     auth
       .createUserWithEmailAndPassword(email, pass)
       .then(user => {
+        // localStorage.set("token", user.token);
         props.login(user);
       })
       .catch(error => {
