@@ -1,8 +1,8 @@
 const INITIAL_STATE = {
   logged: false,
   user: null,
-  income: 0,
-  balance: 0,
+  income: 8000,
+  balance: 8000,
   expense: 0,
   logs: []
 };
