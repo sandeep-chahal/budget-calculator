@@ -7,8 +7,8 @@ import { Login } from "../redux/actions";
 import auth from "../firebase.util";
 
 function Auth(props) {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("ss@ss.com");
+  const [pass, setPass] = useState("Sandeep12");
 
   const handleLogin = () => {
     auth
@@ -32,27 +32,30 @@ function Auth(props) {
   };
 
   return (
-    <div className="auth">
+    <div className="auth-container">
       {props.logged ? <Redirect to="/" /> : null}
-      <h1>Login/SignUp</h1>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={pass}
-        onChange={e => setPass(e.target.value)}
-      />
-      <div className="btns">
-        <div className="signup" onClick={handleSignup}>
-          SignUp
-        </div>
-        <div className="login" onClick={handleLogin}>
-          Login
+      <div className="auth-side"></div>
+
+      <div className="auth">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={pass}
+          onChange={e => setPass(e.target.value)}
+        />
+        <div className="btns">
+          <div className="signup" onClick={handleSignup}>
+            SignUp
+          </div>
+          <div className="login" onClick={handleLogin}>
+            Login
+          </div>
         </div>
       </div>
     </div>
