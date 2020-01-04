@@ -1,3 +1,4 @@
+@import "../mediaQuery.scss";
 .container {
   width: 100vw;
   height: auto;
@@ -15,6 +16,30 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    @include res(phone) {
+      display: block;
+      & > :first-child {
+        width: 80vw;
+        margin: auto;
+        height: 15rem;
+        flex-direction: row;
+        .icon {
+          display: block;
+          width: 35%;
+          height: 70%;
+        }
+      }
+
+      & > *:not(:first-child) {
+        display: inline-flex;
+        width: 40vw;
+        margin: 1rem;
+        height: 15rem;
+      }
+      & > *:nth-child(2) {
+        margin-left: 3rem;
+      }
+    }
   }
 
   .logs {
@@ -22,6 +47,9 @@
     width: 40%;
     margin: auto;
     margin-top: 5rem;
+    @include res(phone) {
+      width: 80vw;
+    }
     .header {
       font-size: 1.2rem;
       text-shadow: none;

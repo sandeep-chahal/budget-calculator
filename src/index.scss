@@ -18,9 +18,13 @@
   --red: #ff5958;
   --black: #7c7c7c;
 }
+@import "./mediaQuery.scss";
 
 html {
   font-size: 62.5%;
+  @include res(phone) {
+    font-size: 55%;
+  }
 }
 
 body {

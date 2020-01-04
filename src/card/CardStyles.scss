@@ -1,11 +1,16 @@
+@import "../mediaQuery.scss";
 .card {
   width: 25%;
-  height: 200px;
+  height: 20rem;
   border-radius: 1rem;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @include res(phone) {
+    // display: none;
+    flex-direction: column;
+  }
 
   .details {
     color: #fff;
@@ -35,6 +40,9 @@
     height: 80%;
     background-size: cover;
     background-position: center;
+    @include res(phone) {
+      display: none;
+    }
   }
 }
 
