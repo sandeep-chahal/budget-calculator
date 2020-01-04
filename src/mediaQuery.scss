@@ -1,0 +1,17 @@
+@mixin res($device) {
+  @if $device == phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  @if $device == tab {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+  @if $device == large {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+}
