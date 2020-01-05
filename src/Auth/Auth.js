@@ -41,7 +41,8 @@ function Auth(props) {
 
   return (
     <div className="auth-container">
-      {props.logged ? <Redirect to="/" /> : null}
+      {console.log("auth rendered")}
+      {props.logged ? <Redirect to="/budget-calculator" /> : null}
       <div className="auth-side"></div>
 
       <div className="auth">

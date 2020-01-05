@@ -18,7 +18,6 @@ function Button(props) {
     <div className="btn-container" onMouseLeave={() => setItem("")}>
       <div className="cross-container"></div>
       {items.map(item => {
-        console.log(item, itemState);
         return (
           <Item
             name={item}

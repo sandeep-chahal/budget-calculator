@@ -15,14 +15,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route path="/auth">
-            <Auth />
-          </Route>
-          <Route path="/">
-            <BudgetCalculator />
-          </Route>
-        </Switch>
+        <Route exact path="/budget-calculator/auth">
+          <Auth />
+        </Route>
+        <Route exact path="/budget-calculator">
+          <BudgetCalculator />
+        </Route>
       </div>
     );
   }

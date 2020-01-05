@@ -17,7 +17,8 @@ function BudgetCalculator(props) {
 
   return (
     <div className="container">
-      {!props.logged ? <Redirect to="auth" /> : null}
+      {console.log("budget calcualtor")}
+      {!props.logged ? <Redirect to="/budget-calculator/auth" /> : null}
       <h1 className="header">Budget Calculator</h1>
       <div className="card-container">
         <Card name="income" amount={props.income}></Card>
