@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.scss";
 
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import BudgetCalculator from "./budget calculator/BudgetCalculator";
 import Auth from "./Auth/Auth";
-import auth from "./firebase.util";
 import { connect } from "react-redux";
 
 class App extends React.Component {
@@ -16,12 +15,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/">
-          <BudgetCalculator />
-        </Route>
-        <Route exact path="/auth">
-          <Auth />
-        </Route>
+        <Switch>
+          <Route path="/auth">
+            <Auth />
+          </Route>
+          <Route path="/">
+            <BudgetCalculator />
+          </Route>
+        </Switch>
       </div>
     );
   }
