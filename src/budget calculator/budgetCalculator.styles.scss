@@ -25,8 +25,8 @@
         flex-direction: row;
         .icon {
           display: block;
-          width: 35%;
-          height: 70%;
+          width: 25vw;
+          height: 25vw;
         }
       }
 
@@ -49,6 +49,9 @@
     margin-top: 5rem;
     @include res(phone) {
       width: 80vw;
+    }
+    @include res(large) {
+      width: 60vw;
     }
     .header {
       font-size: 1.2rem;
