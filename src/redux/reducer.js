@@ -13,12 +13,12 @@ const Reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         logged: true,
-        user: action.payLoad
+        user: action.payload
       };
     case "addItem":
-      const logs = [...state.logs, action.payLoad];
-      const balance = state.balance - action.payLoad.amount;
-      const expense = state.expense - action.payLoad.amount;
+      const logs = [...state.logs, action.payload];
+      const balance = state.balance - action.payload.amount;
+      const expense = state.expense - action.payload.amount;
       return {
         ...state,
         logs,
@@ -28,7 +28,15 @@ const Reducer = (state = INITIAL_STATE, action) => {
     case "addFetchedItems":
       return {
         ...state,
-        logs: action.payload
+        logs: action.payload.items,
+        expense: action.payload.expense,
+        balance: state.income - action.payload.expense
+      };
+    case "setIncome":
+      return {
+        ...state,
+        income: action.payload,
+        balance: action.payload - state.expense
       };
     default:
       return state;

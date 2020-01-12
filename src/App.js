@@ -6,7 +6,7 @@ import BudgetCalculator from "./budget calculator/BudgetCalculator";
 import Auth from "./Auth/Auth";
 import { connect } from "react-redux";
 import firebase from "./firebase.util";
-import { Login, addFetchedItems } from "./redux/actions";
+import { Login, addFetchedItems, setIncome } from "./redux/actions";
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,12 +22,20 @@ class App extends React.Component {
   }
 
   fetchData = () => {
+    // fetching income
+    firebase
+      .database()
+      .ref("income")
+      .once("value")
+      .then(snap => this.props.setIncome(snap.val()));
+
+    // fetching logs
     firebase
       .database()
       .ref("logs")
-      .on("value", snap => {
+      .once("value")
+      .then(snap => {
         if (snap) {
-          // console.log(snap.val());
           this.props.addFetchedItems(snap.val());
         }
       });
@@ -54,7 +62,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     signIn: user => dispatch(Login(user)),
-    addFetchedItems: item => dispatch(addFetchedItems(item))
+    addFetchedItems: item => dispatch(addFetchedItems(item)),
+    setIncome: income => dispatch(setIncome(income))
   };
 };
 
