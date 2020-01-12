@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./auth.styles.scss";
-
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { Login } from "../redux/actions";
-import auth from "../firebase.util";
+import firebase from "../firebase.util";
 
 function Auth(props) {
   const [email, setEmail] = useState("ss@ss.com");
@@ -13,10 +9,11 @@ function Auth(props) {
 
   const handleLogin = () => {
     setLoader(true);
-    auth
+    firebase
+      .auth()
       .signInWithEmailAndPassword(email, pass)
       .then(user => {
-        props.login(user);
+        // props.login(user);
         setLoader(false);
       })
       .catch(error => {
@@ -26,11 +23,12 @@ function Auth(props) {
   };
   const handleSignup = () => {
     setLoader(true);
-    auth
+    firebase
+      .auth()
       .createUserWithEmailAndPassword(email, pass)
       .then(user => {
         // localStorage.set("token", user.token);
-        props.login(user);
+        // props.login(user);
         setLoader(false);
       })
       .catch(error => {
@@ -41,8 +39,7 @@ function Auth(props) {
 
   return (
     <div className="auth-container">
-      {console.log("auth rendered")}
-      {props.logged ? <Redirect to="/budget-calculator" /> : null}
+      {/* {props.logged ? <Redirect to="/budget-calculator" /> : null} */}
       <div className="auth-side"></div>
 
       <div className="auth">
@@ -79,16 +76,4 @@ function Auth(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    logged: state.logged
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    login: user => dispatch(Login(user))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default Auth;

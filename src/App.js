@@ -1,24 +1,44 @@
 import React from "react";
 import "./App.scss";
 
-import { Route, Switch } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import BudgetCalculator from "./budget calculator/BudgetCalculator";
 import Auth from "./Auth/Auth";
 import { connect } from "react-redux";
+import firebase from "./firebase.util";
+import { Login, addFetchedItems } from "./redux/actions";
 
 class App extends React.Component {
   componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (!this.props.logged && token) {
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.signIn(user);
+        this.props.history.replace("/");
+        this.fetchData();
+      } else {
+        this.props.history.replace("/auth");
+      }
+    });
   }
+
+  fetchData = () => {
+    firebase
+      .database()
+      .ref("logs")
+      .on("value", snap => {
+        if (snap) {
+          // console.log(snap.val());
+          this.props.addFetchedItems(snap.val());
+        }
+      });
+  };
   render() {
     return (
       <div className="App">
-        <Route exact path="/budget-calculator/auth">
+        <Route exact path="/auth">
           <Auth />
         </Route>
-        <Route exact path="/budget-calculator">
+        <Route exact path="/">
           <BudgetCalculator />
         </Route>
       </div>
@@ -33,8 +53,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: user => dispatch({ type: "login", val: user })
+    signIn: user => dispatch(Login(user)),
+    addFetchedItems: item => dispatch(addFetchedItems(item))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
