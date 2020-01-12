@@ -7,16 +7,19 @@ import Auth from "./Auth/Auth";
 import { connect } from "react-redux";
 import firebase from "./firebase.util";
 import { Login, addFetchedItems, setIncome } from "./redux/actions";
+import Spinner from "./Spinner/Spinner";
 
 class App extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
+      this.props.setLoading(true);
       if (user) {
         this.props.signIn(user);
         this.props.history.replace("/");
         this.fetchData();
       } else {
         this.props.history.replace("/auth");
+        this.props.setLoading(false);
       }
     });
   }
@@ -37,10 +40,12 @@ class App extends React.Component {
       .then(snap => {
         if (snap) {
           this.props.addFetchedItems(snap.val());
+          this.props.setLoading(false);
         }
       });
   };
   render() {
+    if (this.props.isLoading) return <Spinner />;
     return (
       <div className="App">
         <Route exact path="/auth">
@@ -56,14 +61,16 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    logged: state.logged
+    logged: state.logged,
+    isLoading: state.loading
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     signIn: user => dispatch(Login(user)),
     addFetchedItems: item => dispatch(addFetchedItems(item)),
-    setIncome: income => dispatch(setIncome(income))
+    setIncome: income => dispatch(setIncome(income)),
+    setLoading: loading => dispatch({ type: "setLoading", payload: loading })
   };
 };
 

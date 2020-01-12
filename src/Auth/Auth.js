@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./auth.styles.scss";
 import firebase from "../firebase.util";
+import Spinner from "../Spinner/Spinner";
 
 function Auth(props) {
   const [email, setEmail] = useState("ss@ss.com");
@@ -44,9 +45,7 @@ function Auth(props) {
 
       <div className="auth">
         {loading ? (
-          <div className="cssload-container">
-            <div className="cssload-whirlpool"></div>
-          </div>
+          <Spinner />
         ) : (
           <div>
             <input

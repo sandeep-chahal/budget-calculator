@@ -4,11 +4,18 @@ const INITIAL_STATE = {
   income: 8000,
   balance: 8000,
   expense: 0,
-  logs: []
+  logs: [],
+  loading: true
 };
 
 const Reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "setLoading": {
+      return {
+        ...state,
+        loading: action.payload
+      };
+    }
     case "Login":
       return {
         ...state,
