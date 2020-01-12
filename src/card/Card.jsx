@@ -6,7 +6,12 @@ import { connect } from "react-redux";
 import { setIncome } from "../redux/actions";
 
 const handleIncomeChange = setIncome => {
-  const value = prompt("enter income");
+  const res = prompt("enter income");
+  const value = Number(res);
+  if (!value) {
+    alert("Nope, Not Today!");
+    return;
+  }
   setIncome(value);
   firebase
     .database()
