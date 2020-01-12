@@ -19,7 +19,9 @@ export const addFetchedItems = data => {
     items.push(data[item]);
     expense += Number(data[item].amount);
   }
-  console.log(items);
+  items.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
   return {
     type: "addFetchedItems",
     payload: {

@@ -2,11 +2,11 @@ import React from "react";
 import "./budgetCalculator.styles.scss";
 
 import Card from "../card/Card";
-import Log from "../log/Log";
 import Button from "../add-button/Button";
 import { connect } from "react-redux";
 import { addItem } from "../redux/actions";
 import firebase from "../firebase.util";
+import Logs from "../logs/Logs";
 
 class BudgetCalculator extends React.Component {
   addItem = item => {
@@ -31,12 +31,7 @@ class BudgetCalculator extends React.Component {
           <Card name="expense" amount={this.props.expense}></Card>
         </div>
         <div className="logs">
-          <div className="header">
-            <h2>Today</h2>
-            {this.props.logs.map((log, index) => (
-              <Log name={log.name} amount={log.amount} key={index}></Log>
-            ))}
-          </div>
+          <Logs logs={this.props.logs} />
         </div>
         <Button addItem={this.addItem}></Button>
       </div>
