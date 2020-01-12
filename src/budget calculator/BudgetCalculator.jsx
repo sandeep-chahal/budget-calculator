@@ -5,42 +5,47 @@ import Card from "../card/Card";
 import Log from "../log/Log";
 import Button from "../add-button/Button";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { addItem } from "../redux/actions";
+import firebase from "../firebase.util";
 
-function BudgetCalculator(props) {
-  const addItem = item => {
+class BudgetCalculator extends React.Component {
+  addItem = item => {
     if (item.name === "") return;
-
-    props.AddItem(item);
+    const timestamp = firebase.database.ServerValue.TIMESTAMP;
+    item.timestamp = timestamp;
+    firebase
+      .database()
+      .ref("logs")
+      .push(item)
+      .then(() => this.props.AddItem(item))
+      .catch(err => alert(err.message));
   };
 
-  return (
-    <div className="container">
-      {console.log("budget calcualtor")}
-      {!props.logged ? <Redirect to="/budget-calculator/auth" /> : null}
-      <h1 className="header">Budget Calculator</h1>
-      <div className="card-container">
-        <Card name="income" amount={props.income}></Card>
-        <Card name="balance" amount={props.balance}></Card>
-        <Card name="expense" amount={props.expense}></Card>
-      </div>
-      <div className="logs">
-        <div className="header">
-          <h2>Today</h2>
-          {props.logs.map((log, index) => (
-            <Log name={log.name} amount={log.amount} key={index}></Log>
-          ))}
+  render() {
+    return (
+      <div className="container">
+        <h1 className="header">Budget Calculator</h1>
+        <div className="card-container">
+          <Card name="income" amount={this.props.income}></Card>
+          <Card name="balance" amount={this.props.balance}></Card>
+          <Card name="expense" amount={this.props.expense}></Card>
         </div>
+        <div className="logs">
+          <div className="header">
+            <h2>Today</h2>
+            {this.props.logs.map((log, index) => (
+              <Log name={log.name} amount={log.amount} key={index}></Log>
+            ))}
+          </div>
+        </div>
+        <Button addItem={this.addItem}></Button>
       </div>
-      <Button addItem={addItem}></Button>
-    </div>
-  );
+    );
+  }
 }
 
 const mapStateToProps = state => {
   return {
-    logged: state.logged,
     income: state.income,
     balance: state.balance,
     expense: state.expense,

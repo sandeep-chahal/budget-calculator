@@ -25,6 +25,11 @@ const Reducer = (state = INITIAL_STATE, action) => {
         balance,
         expense
       };
+    case "addFetchedItems":
+      return {
+        ...state,
+        logs: action.payload
+      };
     default:
       return state;
   }
