@@ -50,7 +50,20 @@ class Logs extends React.Component {
       }
     });
     newLogs.push(newLog);
-    return "";
+    console.clear();
+    return newLogs.map((log, i) => {
+      const logs = log.logs.map(lg => {
+        return <Log name={lg.name} amount={lg.amount} key={lg.timestamp} />;
+      });
+      return (
+        <div key={i}>
+          <h2 key={i + log.date} className="header2">
+            {log.date}
+          </h2>
+          {logs}
+        </div>
+      );
+    });
   };
 
   render() {
@@ -60,6 +73,6 @@ class Logs extends React.Component {
 
 export default Logs;
 
-// function Header({ timestamp }) {
-//   return <h2></h2>;
-// }
+function Header(date) {
+  return;
+}
