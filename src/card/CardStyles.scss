@@ -1,7 +1,7 @@
 @import "../mediaQuery.scss";
 .card {
   width: 25%;
-  height: 15vw;
+  height: 12vw;
   border-radius: 1rem;
 
   display: flex;
@@ -38,7 +38,7 @@
     background: url(../assets/img/wallet.png);
   }
   .icon {
-    width: 50%;
+    width: 40%;
     height: 80%;
     background-size: cover;
     background-position: center;

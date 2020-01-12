@@ -30,7 +30,7 @@ function Card(props) {
     <div className={props.name + " card"}>
       <div className="details" style={income ? { marginBottom: "-20px" } : {}}>
         <h3>{props.name}</h3>
-        <div className="amount">
+        <div className="amount" style={{ display: "inline-block" }}>
           {expense ? "-" : ""}${Math.abs(props.amount)}
         </div>
         {income ? (
@@ -38,6 +38,7 @@ function Card(props) {
             src={icon}
             alt="edit"
             onClick={() => handleIncomeChange(props.setIncome)}
+            style={{ display: "inline-block", marginLeft: "10px" }}
           ></img>
         ) : null}
       </div>
