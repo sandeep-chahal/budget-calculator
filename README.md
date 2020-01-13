@@ -11,7 +11,7 @@ A Simple Budget Calculator using React and firebase
     - Router
     - Firebase
 
-![preview](https://ibb.co/5B5rpVB)
+![preview](https://i.ibb.co/0hfC43h/Capture.png)
 
 
 ## Installation
