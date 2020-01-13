@@ -10,10 +10,14 @@ import { Login, addFetchedItems, setIncome } from "./redux/actions";
 import Spinner from "./Spinner/Spinner";
 
 class App extends React.Component {
+  state = {
+    user: null
+  };
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.props.setLoading(true);
       if (user) {
+        this.setState({ user });
         this.props.signIn(user);
         this.props.history.replace("/");
         this.fetchData();
@@ -28,14 +32,16 @@ class App extends React.Component {
     // fetching income
     firebase
       .database()
-      .ref("income")
+      .ref(this.state.user.uid)
+      .child("income")
       .once("value")
       .then(snap => this.props.setIncome(snap.val()));
 
     // fetching logs
     firebase
       .database()
-      .ref("logs")
+      .ref(this.state.user.uid)
+      .child("logs")
       .once("value")
       .then(snap => {
         if (snap) {

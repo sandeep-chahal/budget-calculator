@@ -23,7 +23,9 @@ const Reducer = (state = INITIAL_STATE, action) => {
         user: action.payload
       };
     case "addItem":
-      const logs = [...state.logs, action.payload];
+      const logs = [...state.logs];
+      if (!logs[0]) logs[0] = { date: "Today", logs: [] };
+      logs[0].logs = [action.payload, ...logs[0].logs];
       const balance = state.balance - action.payload.amount;
       const expense = state.expense - action.payload.amount;
       return {

@@ -2,25 +2,27 @@ import React from "react";
 import "./CardStyles.scss";
 import icon from "../assets/img/edit.svg";
 import firebase from "../firebase.util";
-import { connect } from "react-redux";
-import { setIncome } from "../redux/actions";
+// import { connect } from "react-redux";
+// import { setIncome } from "../redux/actions";
 
-const handleIncomeChange = setIncome => {
+const handleIncomeChange = (userUid, setIncome) => {
   const res = prompt("enter income");
   const value = Number(res);
   if (!value) {
     alert("Nope, Not Today!");
     return;
   }
-  setIncome(value);
+  console.log("object", userUid);
   firebase
     .database()
-    .ref("income")
+    .ref(userUid)
+    .child("income")
     .set(value)
     .then(() => {
       alert("done");
     })
     .catch(err => alert(err.message));
+  setIncome(value);
 };
 
 function Card(props) {
@@ -37,7 +39,7 @@ function Card(props) {
           <img
             src={icon}
             alt="edit"
-            onClick={() => handleIncomeChange(props.setIncome)}
+            onClick={() => handleIncomeChange(props.userUid, props.setIncome)}
             style={{ display: "inline-block", marginLeft: "10px" }}
           ></img>
         ) : null}
@@ -47,10 +49,12 @@ function Card(props) {
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setIncome: value => dispatch(setIncome(value))
-  };
-};
+// const
 
-export default connect(null, mapDispatchToProps)(Card);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setIncome: value => dispatch(setIncome(value))
+//   };
+// };
+
+export default Card;

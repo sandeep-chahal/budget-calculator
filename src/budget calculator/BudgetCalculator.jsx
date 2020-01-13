@@ -4,7 +4,7 @@ import "./budgetCalculator.styles.scss";
 import Card from "../card/Card";
 import Button from "../add-button/Button";
 import { connect } from "react-redux";
-import { addItem } from "../redux/actions";
+import { addItem, setIncome } from "../redux/actions";
 import firebase from "../firebase.util";
 import Logs from "../logs/Logs";
 
@@ -15,7 +15,8 @@ class BudgetCalculator extends React.Component {
     item.timestamp = timestamp;
     firebase
       .database()
-      .ref("logs")
+      .ref(this.props.userUid)
+      .child("logs")
       .push(item)
       .then(() => this.props.AddItem(item))
       .catch(err => alert(err.message));
@@ -26,7 +27,12 @@ class BudgetCalculator extends React.Component {
       <div className="container">
         <h1 className="header">Budget Calculator</h1>
         <div className="card-container">
-          <Card name="income" amount={this.props.income}></Card>
+          <Card
+            name="income"
+            amount={this.props.income}
+            userUid={this.props.userUid}
+            setIncome={this.props.setIncome}
+          ></Card>
           <Card name="balance" amount={this.props.balance}></Card>
           <Card name="expense" amount={this.props.expense}></Card>
         </div>
@@ -44,12 +50,14 @@ const mapStateToProps = state => {
     income: state.income,
     balance: state.balance,
     expense: state.expense,
-    logs: state.logs
+    logs: state.logs,
+    userUid: state.user.uid
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    AddItem: item => dispatch(addItem(item))
+    AddItem: item => dispatch(addItem(item)),
+    setIncome: value => dispatch(setIncome(value))
   };
 };
 
