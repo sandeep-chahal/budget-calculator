@@ -50,6 +50,12 @@ const Reducer = (state = INITIAL_STATE, action) => {
 				income: action.payload,
 				balance: action.payload - state.expense
 			};
+		case "removeItem":
+			return {
+				...state,
+				balance: action.payload + state.balance,
+				expense: action.payload - state.expense
+			};
 		default:
 			return state;
 	}

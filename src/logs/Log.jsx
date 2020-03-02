@@ -10,7 +10,10 @@ function Log(props) {
 			</div>
 			<div className="right">
 				<div className="amount">-${props.amount}</div>
-				<div className="close">
+				<div
+					className="close"
+					onClick={() => props.removeItem(props.id, props.amount)}
+				>
 					<span></span>
 					<span></span>
 				</div>

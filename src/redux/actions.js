@@ -16,15 +16,15 @@ export const addFetchedItems = data => {
 	let items = [];
 	let expense = 0;
 	let currentDate = new Date();
-	for (let item in data) {
-		items.push(data[item]);
+	Object.keys(data).forEach(item => {
+		items.push({ ...data[item], key: item });
 		let itemAddedDate = new Date(data[item].timestamp);
 		if (
 			itemAddedDate.getMonth() === currentDate.getMonth() &&
 			itemAddedDate.getFullYear() === currentDate.getFullYear()
 		)
 			expense += Number(data[item].amount);
-	}
+	});
 	items.sort((a, b) => {
 		return b.timestamp - a.timestamp;
 	});
@@ -44,6 +44,12 @@ export const setIncome = income => {
 		payload: income
 	};
 };
+export const removeItem = (id, amount) => {
+	return {
+		type: "removeIncome",
+		payload: { id, amount }
+	};
+};
 
 const months = [
 	"January",
@@ -61,8 +67,7 @@ const months = [
 ];
 
 const formatLogs = logs => {
-	if (logs == false) return [];
-	// debugger;
+	if (logs === false) return [];
 	const today = new Date();
 	const todayDate = today.getDate();
 	const todayMonth = today.getMonth();
