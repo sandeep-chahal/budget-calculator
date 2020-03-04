@@ -22,6 +22,7 @@ class Logs extends React.Component {
 			const logs = log.logs.map(lg => {
 				return (
 					<Log
+						date={log.date}
 						name={lg.name}
 						amount={lg.amount}
 						key={lg.key}
