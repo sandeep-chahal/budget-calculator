@@ -42,8 +42,7 @@ class App extends React.Component {
 			.database()
 			.ref(this.state.user.uid)
 			.child("logs")
-			.once("value")
-			.then(snap => {
+			.on("value", snap => {
 				if (snap) {
 					this.props.addFetchedItems(snap.val());
 					this.props.setLoading(false);

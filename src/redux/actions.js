@@ -5,19 +5,12 @@ export const Login = user => {
 	};
 };
 
-export const addItem = item => {
-	return {
-		type: "addItem",
-		payload: item
-	};
-};
-
 export const addFetchedItems = data => {
 	let items = [];
 	let expense = 0;
 	let currentDate = new Date();
 	Object.keys(data).forEach(item => {
-		items.push({ ...data[item], key: item });
+		items.push({ ...data[item], id: item });
 		let itemAddedDate = new Date(data[item].timestamp);
 		if (
 			itemAddedDate.getMonth() === currentDate.getMonth() &&
@@ -29,6 +22,7 @@ export const addFetchedItems = data => {
 		return b.timestamp - a.timestamp;
 	});
 	items = formatLogs(items);
+	console.log(items);
 	return {
 		type: "addFetchedItems",
 		payload: {
@@ -42,12 +36,6 @@ export const setIncome = income => {
 	return {
 		type: "setIncome",
 		payload: income
-	};
-};
-export const removeItem = (id, amount) => {
-	return {
-		type: "removeIncome",
-		payload: { id, amount }
 	};
 };
 

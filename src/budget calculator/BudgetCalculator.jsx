@@ -4,7 +4,7 @@ import "./budgetCalculator.styles.scss";
 import Card from "../card/Card";
 import Button from "../add-button/Button";
 import { connect } from "react-redux";
-import { addItem, setIncome, removeItem } from "../redux/actions";
+import { setIncome } from "../redux/actions";
 import firebase from "../firebase.util";
 import Logs from "../logs/Logs";
 
@@ -18,7 +18,7 @@ class BudgetCalculator extends React.Component {
 			.ref(this.props.userUid)
 			.child("logs")
 			.push(item)
-			.then(() => this.props.AddItem(item))
+			.then(() => "")
 			.catch(err => alert(err.message));
 	};
 	removeItem = (id, amount) => {
@@ -64,8 +64,6 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		AddItem: item => dispatch(addItem(item)),
-		removeItem: item => dispatch(removeItem(item)),
 		setIncome: value => dispatch(setIncome(value))
 	};
 };

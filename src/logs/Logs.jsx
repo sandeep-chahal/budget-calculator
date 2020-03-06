@@ -25,8 +25,8 @@ class Logs extends React.Component {
 						date={log.date}
 						name={lg.name}
 						amount={lg.amount}
-						key={lg.key}
-						id={lg.key}
+						key={lg.id}
+						id={lg.id}
 						removeItem={this.props.removeItem}
 					/>
 				);

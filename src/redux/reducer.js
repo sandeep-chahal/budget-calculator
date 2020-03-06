@@ -22,21 +22,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
 				logged: true,
 				user: action.payload
 			};
-		case "addItem":
-			const logs = [...state.logs];
 
-			if (!logs[0] || logs[0].date !== "Today") {
-				logs.unshift({ date: "Today", logs: [action.payload] });
-			} else logs[0].logs = [action.payload, ...logs[0].logs];
-
-			const balance = state.balance - action.payload.amount;
-			const expense = state.expense - action.payload.amount;
-			return {
-				...state,
-				logs,
-				balance,
-				expense
-			};
 		case "addFetchedItems":
 			return {
 				...state,
@@ -50,12 +36,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
 				income: action.payload,
 				balance: action.payload - state.expense
 			};
-		case "removeItem":
-			return {
-				...state,
-				balance: action.payload + state.balance,
-				expense: action.payload - state.expense
-			};
+
 		default:
 			return state;
 	}
