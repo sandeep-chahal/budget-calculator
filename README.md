@@ -3,7 +3,7 @@
 
 A Simple Budget Calculator using React and firebase
 
-*here is the [live demo](https://xenodochial-payne-1279bb.netlify.com/)*
+*here is the [live demo](https://budgtcalc.netlify.app)*
 
 **Tools Used:**
 
